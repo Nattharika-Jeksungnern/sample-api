@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone API Repo') {
             steps {
-                git 'https://github.com/your-repo/api.git'
+                git 'https://github.com/Nattharika-Jeksungnern/sample-api.git'
             }
         }
 
@@ -14,12 +14,12 @@ pipeline {
             }
         }
 
-        stage('Build & Push Docker Image') {
-            steps {
-                sh 'docker build -t your-registry/simple-api:latest .'
-                sh 'docker push your-registry/simple-api:latest'
-            }
-        }
+        // stage('Build & Push Docker Image') {
+        //     steps {
+        //         sh 'docker build -t your-registry/simple-api:latest .'
+        //         sh 'docker push your-registry/simple-api:latest'
+        //     }
+        // }
 
         // stage('Trigger Pre-Prod Deployment') {
         //     steps {
