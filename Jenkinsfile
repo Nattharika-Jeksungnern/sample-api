@@ -8,6 +8,15 @@ pipeline {
                 url: 'https://github.com/Nattharika-Jeksungnern/sample-api.git'
             }
         }
+        
+        stage('Debug Environment') {
+            steps {
+                sh 'echo "Python Path: $(which python3)"'
+                sh 'python3 --version'
+                sh 'python3 -m site'
+                sh 'python3 -m pip list'
+            }
+        }
 
         stage('Setup Virtual Environment') {
             steps {
