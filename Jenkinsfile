@@ -26,6 +26,12 @@ pipeline {
             }
         }
 
+        stage('Verify Flask Installation') {
+            steps {
+                sh './venv/bin/python -m pip list | grep Flask'
+            }
+        }
+
         stage('Run Unit Tests') {
             steps {
                 sh 'python3 -m unittest discover -s tests'
