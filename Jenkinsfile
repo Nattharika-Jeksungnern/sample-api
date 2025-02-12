@@ -8,7 +8,7 @@ pipeline {
                 url: 'https://github.com/Nattharika-Jeksungnern/sample-api.git'
             }
         }
-        
+
         stage('Debug Environment') {
             steps {
                 sh 'echo "Python Path: $(which python3)"'
@@ -21,8 +21,8 @@ pipeline {
         stage('Setup Virtual Environment') {
             steps {
                 sh 'python3 -m venv venv'
-                sh './venv/bin/pip install --upgrade pip'
-                sh './venv/bin/pip install -r requirements.txt'
+                sh './venv/bin/python -m pip install --upgrade pip'
+                sh './venv/bin/python -m pip install -r requirements.txt'
             }
         }
 
