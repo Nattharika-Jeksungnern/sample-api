@@ -26,6 +26,14 @@ pipeline {
             }
         }
 
+        stage('Check Python') {
+            steps {
+                sh 'which python3'
+                sh 'python3 --version'
+                sh 'python3 -m site'
+            }
+        }
+
         stage('Verify Flask Installation') {
             steps {
                 sh './venv/bin/python -m pip list | grep Flask'
