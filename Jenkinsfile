@@ -42,7 +42,7 @@ pipeline {
 
         stage('Run Unit Tests') {
             steps {
-                sh 'python3 -m unittest discover -s tests'
+                sh './venv/bin/python -m unittest discover -s tests'
             }
         }
 
