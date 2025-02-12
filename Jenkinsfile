@@ -12,9 +12,8 @@ pipeline {
         stage('Setup Virtual Environment') {
             steps {
                 sh 'python3 -m venv venv'
-                sh '. venv/bin/activate && pip install --upgrade pip'
-                sh '. venv/bin/activate && pip install flask'
-                sh '. venv/bin/activate && pip install -r requirements.txt'
+                sh './venv/bin/pip install --upgrade pip'
+                sh './venv/bin/pip install -r requirements.txt'
             }
         }
 
