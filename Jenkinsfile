@@ -9,7 +9,7 @@ pipeline {
             }
         }
 
-        // ไปที่ VM ตาม agent แล้วลง python venv, flask ใน folder pipline นั้น
+        // ไปที่ VM ตาม agent แล้วลง python venv, flask ใน folder pipline นั้น ใช้ state แล้วไม่ได้
 
         stage('Run Unit Tests') {
             steps {
