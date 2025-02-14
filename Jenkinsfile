@@ -29,9 +29,8 @@ pipeline {
                 withCredentials([string(credentialsId: 'ghcr-pat', variable: 'GHCR_TOKEN')]) {
                 sh 'echo "$GHCR_TOKEN" | docker login ghcr.io -u your-github-username --password-stdin'
                 }
+
             }
-    }
-}
 
         }
 
