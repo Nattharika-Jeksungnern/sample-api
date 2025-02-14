@@ -1,5 +1,12 @@
 pipeline {
     agent { label 'vm2' }
+    environment
+    {
+        GHCR_USERNAME = 'Nattharika-Jensungnern'
+        GHCR_TOKEN = credentials('ghcr-pat')  // ดึง PAT จาก Jenkins Credentials
+        IMAGE_NAME = 'ghcr.io/Nattharika-Jensungnern/sample-api'
+        IMAGE_TAG = 'jenkins-spdx'
+    }
 
     stages {
         stage('Clone API Repo') {
@@ -17,6 +24,11 @@ pipeline {
             }
         }
 
+        stage('Login to GHCR') {
+            steps {
+                sh "echo $GHCR_TOKEN | docker login ghcr.io -u $GHCR_USERNAME --password-stdin"
+            }
+        }
 
         // stage('Build & Push Docker Image') {
         //     steps {
