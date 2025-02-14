@@ -17,12 +17,6 @@ pipeline {
             }
         }
 
-        stage('try')
-        {
-            steps{
-                sh 'hostname'
-            }
-        }
 
         // stage('Build & Push Docker Image') {
         //     steps {
