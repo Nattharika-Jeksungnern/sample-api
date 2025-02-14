@@ -26,8 +26,13 @@ pipeline {
 
         stage('Login to GHCR') {
             steps {
-                sh "echo $GHCR_TOKEN | docker login ghcr.io -u $GHCR_USERNAME --password-stdin"
+                withCredentials([string(credentialsId: 'ghcr-pat', variable: 'GHCR_TOKEN')]) {
+                sh 'echo "$GHCR_TOKEN" | docker login ghcr.io -u your-github-username --password-stdin'
+                }
             }
+    }
+}
+
         }
 
         // stage('Build & Push Docker Image') {
