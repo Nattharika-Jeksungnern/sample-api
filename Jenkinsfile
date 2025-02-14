@@ -9,11 +9,14 @@ pipeline {
             }
         }
 
+        // ไปที่ VM ตาม agent แล้วลง python venv, flask ใน folder pipline นั้น
+
         stage('Run Unit Tests') {
             steps {
                 sh './venv/bin/python -m unittest discover -s tests'
             }
         }
+
 
         // stage('Build & Push Docker Image') {
         //     steps {
