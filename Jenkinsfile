@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'vm2' }
+    agent { label 'test' }
     environment
     {
         GHCR_USERNAME = 'Nattharika-Jeksungnern'
