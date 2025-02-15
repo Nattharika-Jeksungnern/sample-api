@@ -4,7 +4,7 @@ pipeline {
     {
         GHCR_USERNAME = 'Nattharika-Jensungnern'
         GHCR_TOKEN = credentials('ghcr-pat')  // ดึง PAT จาก Jenkins Credentials
-        IMAGE_NAME = 'ghcr.io/Nattharika-Jensungnern/sample-api'
+        IMAGE_NAME = 'ghcr.io/nattharika-jensungnern/sample-api'
         IMAGE_TAG = 'jenkins-spdx'
     }
 
