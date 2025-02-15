@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
@@ -6,9 +6,10 @@ app = Flask(__name__)
 def get_code():
     return "12345"
 
-@app.route('/plus/<int:a>/<int:b>')
-def plus(a, b):
-    return str(a + b)
+@app.route('/plus/<float:num1>/<float:num2>', methods=['GET'])
+def add_numbers(num1, num2):
+    result = num1 + num2
+    return jsonify({'plus': result})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
