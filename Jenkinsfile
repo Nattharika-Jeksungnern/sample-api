@@ -52,7 +52,7 @@ pipeline {
         stage('Get Container IP') {
             steps {
                 script {
-                    def containerIp = 192.168.1.140
+                    def containerIp = "192.168.1.140"
                     echo "Access the application at http://${containerIp}:5000"
                 }
             }
