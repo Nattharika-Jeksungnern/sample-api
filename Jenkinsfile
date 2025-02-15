@@ -58,6 +58,18 @@ pipeline {
             }
         }
 
+        stage('Clone Robot Repo') {
+            steps {
+                git branch: 'main',
+                url: 'https://github.com/Nattharika-Jeksungnern/sample-api-robot.git'
+            }
+        }
+
+        stage('Run Robot Tests') {
+            steps {
+                sh './venv/bin/python robot test-calculate.robot'
+            }
+        }
 
 
         // step('Push sample-api image')
