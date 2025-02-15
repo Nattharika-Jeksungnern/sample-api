@@ -47,12 +47,12 @@ pipeline {
             }
         }
 
-        step('Push sample-api image')
-        {
-            steps{
-                sh "docker push $IMAGE_NAME:$IMAGE_TAG"
-            }
-        }
+        // step('Push sample-api image')
+        // {
+        //     steps{
+        //         sh "docker push $IMAGE_NAME:$IMAGE_TAG"
+        //     }
+        // }
 
     }
 }
