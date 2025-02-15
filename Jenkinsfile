@@ -40,7 +40,7 @@ pipeline {
             }
         }
 
-        step('Create Container')
+        stage('Create Container')
         {
             steps{
                 sh "docker run -d --name $CONTAINER_NAME $IMAGE_NAME:$IMAGE_TAG"
