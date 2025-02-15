@@ -67,7 +67,9 @@ pipeline {
 
         stage('Run Robot Tests') {
             steps {
-                sh './venv/bin/python robot test-calculate.robot'
+                sh '''#!/bin/bash
+                source ./venv/bin/activate && ./venv/bin/python -m robot test-calculate.robot
+                '''
             }
         }
 
