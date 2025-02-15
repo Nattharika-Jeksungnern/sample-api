@@ -34,24 +34,25 @@ pipeline {
 
         }
 
-        stage('Build and Push Image') {
+        stage('Build Image') {
             steps {
                 sh "docker build -t $IMAGE_NAME:$IMAGE_TAG ."
-                sh "docker push $IMAGE_NAME:$IMAGE_TAG"
             }
         }
 
-        // stage('Build & Push Docker Image') {
-        //     steps {
-        //         sh 'docker build -t your-registry/simple-api:latest .'
-        //         sh 'docker push your-registry/simple-api:latest'
+        step('Create Container')
+        {
+            steps{
+                sh "docker run -d --name $CONTAINER_NAME $IMAGE_NAME:$IMAGE_TAG"
+            }
+        }
+
+        // step('Push sample-api image')
+        // {
+        //     steps{
+        //         sh "docker push $IMAGE_NAME:$IMAGE_TAG"
         //     }
         // }
 
-        // stage('Trigger Pre-Prod Deployment') {
-        //     steps {
-        //         build job: 'VM3_PreProd_Pipeline'  // เรียก Pipeline ของ VM 3
-        //     }
-        // }
     }
 }
