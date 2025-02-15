@@ -54,6 +54,7 @@ pipeline {
                 script {
                     def containerIp = sh(script: "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $CONTAINER_NAME", returnStdout: true).trim()
                     echo "Container IP: ${containerIp}"
+                    echo "Access the application at http://${containerIp}:5000"
                 }
             }
         }
