@@ -45,15 +45,14 @@ pipeline {
         {
             steps{
                 sh "docker rm -f sample-api"
-                sh "docker run -d -p 5000:5000 --name $CONTAINER_NAME $IMAGE_NAME:$IMAGE_TAG"
+                sh "docker run -d -p 5000:5000 --name $CONTAINER_NAME $IMAGE_NAME:$IMAGE_TAG" // เป็น bridge network จะใช้ ip เครื่อง VM ที่ run jenkins master
             }
         }
 
         stage('Get Container IP') {
             steps {
                 script {
-                    def containerIp = sh(script: "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $CONTAINER_NAME", returnStdout: true).trim()
-                    echo "Container IP: ${containerIp}"
+                    def containerIp = 192.168.1.140
                     echo "Access the application at http://${containerIp}:5000"
                 }
             }
