@@ -41,12 +41,23 @@ pipeline {
             }
         }
 
-        stage('Create Container')
+        stage('Create Container and Map Port')
         {
             steps{
-                sh "docker run -d --name $CONTAINER_NAME $IMAGE_NAME:$IMAGE_TAG"
+                sh "docker run -d -p 5000:5000 --name $CONTAINER_NAME $IMAGE_NAME:$IMAGE_TAG"
             }
         }
+
+        stage('Get Container IP') {
+            steps {
+                script {
+                    def containerIp = sh(script: "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $CONTAINER_NAME", returnStdout: true).trim()
+                    echo "Container IP: ${containerIp}"
+                }
+            }
+        }
+
+
 
         // step('Push sample-api image')
         // {
