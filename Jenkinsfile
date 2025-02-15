@@ -34,6 +34,13 @@ pipeline {
 
         }
 
+        stage('Build and Push Image') {
+            steps {
+                sh "docker build -t $IMAGE_NAME:$IMAGE_TAG ."
+                sh "docker push $IMAGE_NAME:$IMAGE_TAG"
+            }
+        }
+
         // stage('Build & Push Docker Image') {
         //     steps {
         //         sh 'docker build -t your-registry/simple-api:latest .'
