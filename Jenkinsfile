@@ -49,15 +49,6 @@ pipeline {
             }
         }
 
-        stage('Get Container IP') {
-            steps {
-                script {
-                    def containerIp = "192.168.1.140"
-                    echo "Access the application at http://${containerIp}:5000"
-                }
-            }
-        }
-
         stage('Clone Robot Repo') {
             steps {
                 git branch: 'main',
@@ -74,12 +65,12 @@ pipeline {
         }
 
 
-        // step('Push sample-api image')
-        // {
-        //     steps{
-        //         sh "docker push $IMAGE_NAME:$IMAGE_TAG"
-        //     }
-        // }
+        stage('Push sample-api image')
+        {
+            steps{
+                sh "docker push $IMAGE_NAME:$IMAGE_TAG"
+            }
+        }
 
     }
 }
