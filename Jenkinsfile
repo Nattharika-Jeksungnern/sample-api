@@ -44,9 +44,9 @@ pipeline {
         stage('Create Container and Map Port')
         {
             steps{
-                sh "sudo docker stop $CONTAINER_NAME"
-                sh "sudo docker rm -f sample-api"
-                sh "sudo docker run -d -p 5000:5000 --name $CONTAINER_NAME $IMAGE_NAME:$IMAGE_TAG" // เป็น bridge network จะใช้ ip เครื่อง VM ที่ run jenkins master
+                sh "echo \"jenkins2\" | sudo -S docker stop $CONTAINER_NAME"
+                sh "echo \"jenkins2\" | sudo -S docker rm -f sample-api"
+                sh "docker run -d -p 5000:5000 --name $CONTAINER_NAME $IMAGE_NAME:$IMAGE_TAG" // เป็น bridge network จะใช้ ip เครื่อง VM ที่ run jenkins master
             }
         }
 
